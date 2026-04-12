@@ -375,11 +375,9 @@ class _ChatScreenState extends State<ChatScreen> {
                     itemBuilder: (context, i) {
                     final msg = msgs[i];
                     final isMe = msg['sender'] == me;
-                    final name = (msg.containsKey('senderName') 
-                        ? msg['senderName'] 
-                        : msg['sender']?.split('@')[0] ?? '') as String;
+                    final name = (msg['senderName'] ?? msg['sender']?.split('@')[0] ?? '') as String;
                     final time = _formatTime(msg['time'] as Timestamp?);
-                    return Align(ы
+                    return Align(
                         alignment: isMe ? Alignment.centerRight : Alignment.centerLeft,
                         child: Container(
                           constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.75),
