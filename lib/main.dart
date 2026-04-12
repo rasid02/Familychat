@@ -373,11 +373,13 @@ class _ChatScreenState extends State<ChatScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                     itemCount: msgs.length,
                     itemBuilder: (context, i) {
-                      final msg = msgs[i];
-                      final isMe = msg['sender'] == me;
-                      final name = (data.containsKey('senderName') ? data['senderName'] : data['senderEmail'] ?? '') as String;
-                      final time = _formatTime(msg['time'] as Timestamp?);
-                      return Align(
+                    final msg = msgs[i];
+                    final isMe = msg['sender'] == me;
+                    final name = (msg.containsKey('senderName') 
+                        ? msg['senderName'] 
+                        : msg['sender']?.split('@')[0] ?? '') as String;
+                    final time = _formatTime(msg['time'] as Timestamp?);
+                    return Align(ы
                         alignment: isMe ? Alignment.centerRight : Alignment.centerLeft,
                         child: Container(
                           constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.75),
