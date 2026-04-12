@@ -375,7 +375,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     itemBuilder: (context, i) {
                       final msg = msgs[i];
                       final isMe = msg['sender'] == me;
-                      final name = msg['senderName'] ?? msg['sender'];
+                      final name = (data.containsKey('senderName') ? data['senderName'] : data['senderEmail'] ?? '') as String;
                       final time = _formatTime(msg['time'] as Timestamp?);
                       return Align(
                         alignment: isMe ? Alignment.centerRight : Alignment.centerLeft,
