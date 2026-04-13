@@ -466,7 +466,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   Future<void> sendDocument() async {
-    final result = await FilePicker.platform.pickFiles();
+    final result = await FilePicker.pickFiles();
     if (result != null) await sendMessage('📄 ${result.files.single.name}', type: 'document');
   }
 
